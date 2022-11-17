@@ -13,12 +13,14 @@ M.override = {
   },
   FloatBorder = {
     fg = "grey"
-  }
+  },
 }
 
--- M.add = {
---   NvimTreeOpenedFolderName = { fg = "green", bold = true, italic = true },
---   NvimTreeOpenedFile = { fg = "teal", bold = true, italic = true },
--- }
+M.add = {
+  LspInfoBorder = {
+    fg = "grey"
+  },
+}
+
 
 return M

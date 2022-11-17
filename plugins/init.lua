@@ -29,6 +29,10 @@ return {
     override_options = overrides.cmp,
   },
 
+  ["nvim-telescope/telescope.nvim"] = {
+    override_options = overrides.telescope,
+  },
+
   -- Install a plugin
   -- ["max397574/better-escape.nvim"] = {
   --   event = "InsertEnter",

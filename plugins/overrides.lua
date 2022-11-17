@@ -22,7 +22,12 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
+
+    "haskell-language-server",
   },
+  -- ui = {
+  --   border = vim.g.border_style,
+  -- }
 }
 
 -- git support in nvimtree
@@ -55,6 +60,7 @@ local function border(hl_name)
 end
 
 M.cmp = function()
+  local cmp = require "cmp"
   return {
     window = {
       completion = {
@@ -66,7 +72,16 @@ M.cmp = function()
         winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
       },
     },
-    mapping = require("custom.mappings.cmp").setup,
+    mapping = require("custom.mappings.cmp").setup(cmp),
+  }
+end
+
+M.telescope = function()
+  local actions = require "telescope.actions"
+  return {
+    defaults = {
+      mappings = require("custom.mappings.telescope").setup(actions),
+    },
   }
 end
 

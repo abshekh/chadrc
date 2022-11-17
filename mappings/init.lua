@@ -1,6 +1,6 @@
-local function termcodes(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+-- local function termcodes(str)
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
 
 local M = {}
 
@@ -41,16 +41,16 @@ M.general = {
 
     -- quickfix list
     ["<C-q>"] = { "<CMD>call QuickFixToggle() <CR>", "quickfix toggle" },
-    ["]q"] = { "<CMD>cnext<CR>", "quickfix next" },
-    ["[q"] = { "<CMD>cprev<CR>", "quickfix next" },
+    ["]q"]    = { "<CMD>cnext<CR>", "quickfix next" },
+    ["[q"]    = { "<CMD>cprev<CR>", "quickfix next" },
 
     ["<C-w>m"] = { "<CMD>tabedit %<CR>", "maximize" },
 
     ["gf"] = { "gF", "go to file" },
 
-    ["<C-Up>"] = { ":resize +2<CR>", "resize window up" },
-    ["<C-Down>"] = { ":resize -2<CR>", "resize window down" },
-    ["<C-Left>"] = { ":vertical resize -2<CR>", "resize window left" },
+    ["<C-Up>"]    = { ":resize +2<CR>", "resize window up" },
+    ["<C-Down>"]  = { ":resize -2<CR>", "resize window down" },
+    ["<C-Left>"]  = { ":vertical resize -2<CR>", "resize window left" },
     ["<C-Right>"] = { ":vertical resize +2<CR>", "resize window right" },
   },
 
@@ -68,14 +68,14 @@ M.tabufline = {
 
   n = {
     -- cycle through buffers
-    ["<TAB>"] = {
+    ["<S-l>"] = {
       function()
         require("nvchad_ui.tabufline").tabuflineNext()
       end,
       "goto next buffer",
     },
 
-    ["<S-Tab>"] = {
+    ["<S-h>"] = {
       function()
         require("nvchad_ui.tabufline").tabuflinePrev()
       end,
@@ -95,139 +95,7 @@ M.tabufline = {
   },
 }
 
-M.lspconfig = {
-  plugin = true,
-
-  -- See `<CMD> :help vim.lsp.*` for documentation on any of the below functions
-
-  n = {
-    ["gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
-      "lsp declaration",
-    },
-
-    ["gd"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      "lsp definition",
-    },
-
-    ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "lsp hover",
-    },
-
-    ["gi"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-      "lsp implementation",
-    },
-
-    ["<leader>ls"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "lsp signature_help",
-    },
-
-    ["<leader>D"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "lsp definition type",
-    },
-
-    ["<leader>ra"] = {
-      function()
-        require("nvchad_ui.renamer").open()
-      end,
-      "lsp rename",
-    },
-
-    ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "lsp code_action",
-    },
-
-    ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      "lsp references",
-    },
-
-    ["<leader>f"] = {
-      function()
-        vim.diagnostic.open_float()
-      end,
-      "floating diagnostic",
-    },
-
-    ["[d"] = {
-      function()
-        vim.diagnostic.goto_prev()
-      end,
-      "goto prev",
-    },
-
-    ["]d"] = {
-      function()
-        vim.diagnostic.goto_next()
-      end,
-      "goto_next",
-    },
-
-    -- ["<leader>q"] = {
-    --   function()
-    --     vim.diagnostic.setloclist()
-    --   end,
-    --   "diagnostic setloclist",
-    -- },
-
-    ["<leader>d"] = {
-      function()
-        vim.diagnostic.setqflist()
-      end,
-      "diagnostic setqflist",
-    },
-
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "lsp formatting",
-    },
-
-    ["<leader>wa"] = {
-      function()
-        vim.lsp.buf.add_workspace_folder()
-      end,
-      "add workspace folder",
-    },
-
-    ["<leader>wr"] = {
-      function()
-        vim.lsp.buf.remove_workspace_folder()
-      end,
-      "remove workspace folder",
-    },
-
-    ["<leader>wl"] = {
-      function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end,
-      "list workspace folders",
-    },
-  },
-}
+M.lspconfig = require("custom.mappings.lsp").lspconfig_mappings
 
 M.nvimtree = {
   plugin = true,
@@ -241,43 +109,7 @@ M.nvimtree = {
   },
 }
 
-local function getVisualSelection()
-  vim.cmd 'noau normal! "vy"'
-  local text = vim.fn.getreg "v"
-  vim.fn.setreg("v", {})
-
-  text = string.gsub(text, "\n", "")
-  if #text > 0 then
-    return text
-  else
-    return ""
-  end
-end
-
-M.telescope = {
-  plugin = true,
-  n = {
-    -- find
-    ["<leader><leader>"] = { "<CMD> Telescope find_files <CR>", "find files" },
-    ["<leader>/"] = { "<CMD> Telescope live_grep <CR>", "live grep" },
-    ["<leader>,"] = { "<CMD> Telescope buffers <CR>", "find buffers" },
-
-    -- git
-    ["<leader>gm"] = { "<CMD> Telescope git_commits <CR>", "git commits" },
-    ["<leader>gs"] = { "<CMD> Telescope git_status <CR>", "git status" },
-    ["<leader>gb"] = { "<CMD> Telescope git_branches <CR>", "git branches" },
-    ["<leader>j"] = { "<CMD> Telescope jumplist <CR>", "jumplist" },
-  },
-  v = {
-    ["<leader>/"] = {
-      function()
-        local text = getVisualSelection()
-        require("telescope.builtin").live_grep { default_text = text }
-      end,
-      "live grep",
-    },
-  },
-}
+M.telescope = require("custom.mappings.telescope").mappings
 
 M.nvterm = {
   plugin = true,
@@ -423,33 +255,33 @@ M.gitsigns = {
     },
 
     -- Actions
-    ["<leader>rh"] = {
-      function()
-        require("gitsigns").reset_hunk()
-      end,
-      "Reset hunk",
-    },
+    -- ["<leader>rh"] = {
+    --   function()
+    --     require("gitsigns").reset_hunk()
+    --   end,
+    --   "Reset hunk",
+    -- },
 
-    ["<leader>ph"] = {
-      function()
-        require("gitsigns").preview_hunk()
-      end,
-      "Preview hunk",
-    },
+    -- ["<leader>ph"] = {
+    --   function()
+    --     require("gitsigns").preview_hunk()
+    --   end,
+    --   "Preview hunk",
+    -- },
 
-    ["<leader>gb"] = {
+    ["<leader>gB"] = {
       function()
         package.loaded.gitsigns.blame_line()
       end,
       "Blame line",
     },
 
-    ["<leader>td"] = {
-      function()
-        require("gitsigns").toggle_deleted()
-      end,
-      "Toggle deleted",
-    },
+    -- ["<leader>td"] = {
+    --   function()
+    --     require("gitsigns").toggle_deleted()
+    --   end,
+    --   "Toggle deleted",
+    -- },
   },
 }
 
