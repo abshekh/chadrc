@@ -4,6 +4,10 @@ local M = {}
 local themes = require "custom.overidden_themes"
 local highlights = require "custom.highlights"
 
+-- custom global vars
+vim.g.border_style       = "rounded"
+vim.g.disable_formatting = {}
+
 M.ui = {
   theme_toggle = { "onedark", "one_light" },
   theme = "onedark",

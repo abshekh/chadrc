@@ -68,7 +68,7 @@ M.lspconfig_mappings = {
       "lsp references",
     },
 
-    ["<leader>f"] = {
+    ["gl"] = {
       function()
         vim.diagnostic.open_float()
       end,
@@ -96,13 +96,6 @@ M.lspconfig_mappings = {
       "diagnostic setqflist",
     },
 
-    ["Q"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "lsp formatting",
-    },
-
     ["<leader>wa"] = {
       function()
         vim.lsp.buf.add_workspace_folder()
@@ -124,21 +117,17 @@ M.lspconfig_mappings = {
       "list workspace folders",
     },
   },
-  v = {
-    ["Q"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "lsp formatting",
-    },
-  },
 }
 
 M.lspconfig_conditional_mapping = {
   format = function(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
     if client.supports_method "textDocument/formatting" then
-      map({ "n", "v" }, "Q", vim.lsp.buf.format, opts)
+      map({ "n", "v" }, "Q",
+        function()
+          vim.lsp.buf.format { async = true }
+        end,
+        opts)
     end
   end
 }

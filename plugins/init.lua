@@ -33,6 +33,10 @@ return {
     override_options = overrides.telescope,
   },
 
+  ["wbthomason/packer.nvim"] = {
+    override_options = overrides.packer,
+  },
+
   -- Install a plugin
   -- ["max397574/better-escape.nvim"] = {
   --   event = "InsertEnter",

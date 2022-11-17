@@ -1,7 +1,3 @@
--- local function termcodes(str)
---   return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
-
 local M = {}
 
 M.disabled = {
@@ -96,19 +92,7 @@ M.tabufline = {
 }
 
 M.lspconfig = require("custom.mappings.lsp").lspconfig_mappings
-
-M.nvimtree = {
-  plugin = true,
-
-  n = {
-    -- toggle
-    ["<C-n>"] = { "<CMD> NvimTreeToggle <CR>", "toggle nvimtree" },
-
-    -- focus
-    ["<leader>e"] = { "<CMD> NvimTreeFocus <CR>", "focus nvimtree" },
-  },
-}
-
+M.nvimtree = require("custom.mappings.nvimtree").mappings
 M.telescope = require("custom.mappings.telescope").mappings
 
 M.nvterm = {

@@ -25,9 +25,9 @@ M.mason = {
 
     "haskell-language-server",
   },
-  -- ui = {
-  --   border = vim.g.border_style,
-  -- }
+  ui = {
+    border = vim.g.border_style,
+  }
 }
 
 -- git support in nvimtree
@@ -36,12 +36,14 @@ M.nvimtree = {
     enable = false,
   },
 
-  renderer = {
-    highlight_git = true,
-    icons = {
-      show = {
-        git = true,
-      },
+  update_focused_file = {
+    enable = true,
+    update_root = false
+  },
+  view = {
+    mappings = {
+      custom_only = false,
+      list = require("custom.mappings.nvimtree").setup,
     },
   },
 }
@@ -84,5 +86,17 @@ M.telescope = function()
     },
   }
 end
+
+
+M.packer = {
+  display = {
+    open_fn = function()
+      return require("packer.util").float {
+        border = vim.g.border_style
+      }
+    end,
+    prompt_border = vim.g.border_style,
+  },
+}
 
 return M
