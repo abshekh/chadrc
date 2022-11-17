@@ -11,6 +11,12 @@ M.disabled = {
     ["<C-j>"] = "",
     ["<C-k>"] = "",
   },
+  i = {
+    ["<C-h>"] = "",
+    ["<C-l>"] = "",
+    ["<C-j>"] = "",
+    ["<C-k>"] = "",
+  },
   v = {
     ["<leader>/"] = "",
   },
@@ -21,66 +27,40 @@ M.general = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },
     ["<C-e>"] = { "<End>", "end of line" },
-
-    -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "move left" },
-    ["<C-l>"] = { "<Right>", "move right" },
-    ["<C-j>"] = { "<Down>", "move down" },
-    ["<C-k>"] = { "<Up>", "move up" },
   },
 
   n = {
-    ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
-
-    -- switch between windows
-
     -- save
-    ["<C-s>"] = { "<cmd> w <CR>", "save file" },
+    ["<C-s>"] = { "<CMD> w <CR>", "save file" },
 
     -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
-
-    -- line numbers
-    ["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
-
-    -- update nvchad
-    ["<leader>uu"] = { "<cmd> :NvChadUpdate <CR>", "update nvchad" },
-
-    ["<leader>tt"] = {
-      function()
-        require("base46").toggle_theme()
-      end,
-      "toggle theme",
-    },
-
-    -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-    -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    -- empty mode is same as using <cmd> :map
-    -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+    ["<C-c>"] = { "<CMD> %y+ <CR>", "copy whole file" },
 
     -- new buffer
-    ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
+    ["<leader>b"] = { "<CMD> enew <CR>", "new buffer" },
+
+    -- quickfix list
+    ["<C-q>"] = { "<CMD>call QuickFixToggle() <CR>", "quickfix toggle" },
+    ["]q"] = { "<CMD>cnext<CR>", "quickfix next" },
+    ["[q"] = { "<CMD>cprev<CR>", "quickfix next" },
+
+    ["<C-w>m"] = { "<CMD>tabedit %<CR>", "maximize" },
+
+    ["gf"] = { "gF", "go to file" },
+
+    ["<C-Up>"] = { ":resize +2<CR>", "resize window up" },
+    ["<C-Down>"] = { ":resize -2<CR>", "resize window down" },
+    ["<C-Left>"] = { ":vertical resize -2<CR>", "resize window left" },
+    ["<C-Right>"] = { ":vertical resize +2<CR>", "resize window right" },
   },
 
-  t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
+  -- t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
 
-  v = {
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-  },
+  -- v = {
+  -- },
 
-  x = {
-    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    -- Don't copy the replaced text after pasting in visual mode
-    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
-  },
+  -- x = {
+  -- },
 }
 
 M.tabufline = {
@@ -103,7 +83,7 @@ M.tabufline = {
     },
 
     -- pick buffers via numbers
-    ["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
+    ["<Bslash>"] = { "<CMD> TbufPick <CR>", "Pick buffer" },
 
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
@@ -118,7 +98,7 @@ M.tabufline = {
 M.lspconfig = {
   plugin = true,
 
-  -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+  -- See `<CMD> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
     ["gD"] = {
@@ -198,18 +178,25 @@ M.lspconfig = {
       "goto prev",
     },
 
-    ["d]"] = {
+    ["]d"] = {
       function()
         vim.diagnostic.goto_next()
       end,
       "goto_next",
     },
 
-    ["<leader>q"] = {
+    -- ["<leader>q"] = {
+    --   function()
+    --     vim.diagnostic.setloclist()
+    --   end,
+    --   "diagnostic setloclist",
+    -- },
+
+    ["<leader>d"] = {
       function()
-        vim.diagnostic.setloclist()
+        vim.diagnostic.setqflist()
       end,
-      "diagnostic setloclist",
+      "diagnostic setqflist",
     },
 
     ["<leader>fm"] = {
@@ -247,10 +234,10 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    ["<C-n>"] = { "<CMD> NvimTreeToggle <CR>", "toggle nvimtree" },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
+    ["<leader>e"] = { "<CMD> NvimTreeFocus <CR>", "focus nvimtree" },
   },
 }
 
@@ -271,15 +258,15 @@ M.telescope = {
   plugin = true,
   n = {
     -- find
-    ["<leader><leader>"] = { "<cmd> Telescope find_files <CR>", "find files" },
-    ["<leader>/"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
-    ["<leader>,"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
+    ["<leader><leader>"] = { "<CMD> Telescope find_files <CR>", "find files" },
+    ["<leader>/"] = { "<CMD> Telescope live_grep <CR>", "live grep" },
+    ["<leader>,"] = { "<CMD> Telescope buffers <CR>", "find buffers" },
 
     -- git
-    ["<leader>gm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
-    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "git status" },
-    ["<leader>gb"] = { "<cmd> Telescope git_branches <CR>", "git branches" },
-    ["<leader>j"] = { "<cmd> Telescope jumplist <CR>", "jumplist" },
+    ["<leader>gm"] = { "<CMD> Telescope git_commits <CR>", "git commits" },
+    ["<leader>gs"] = { "<CMD> Telescope git_status <CR>", "git status" },
+    ["<leader>gb"] = { "<CMD> Telescope git_branches <CR>", "git branches" },
+    ["<leader>j"] = { "<CMD> Telescope jumplist <CR>", "jumplist" },
   },
   v = {
     ["<leader>/"] = {

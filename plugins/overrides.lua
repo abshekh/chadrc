@@ -28,7 +28,7 @@ M.mason = {
 -- git support in nvimtree
 M.nvimtree = {
   git = {
-    enable = true,
+    enable = false,
   },
 
   renderer = {
@@ -40,7 +40,6 @@ M.nvimtree = {
     },
   },
 }
-
 
 local function border(hl_name)
   return {
@@ -55,21 +54,20 @@ local function border(hl_name)
   }
 end
 
--- local _, cmp = pcall(require, "cmp")
--- hi CmpBorder guifb=42464e
-M.cmp = {
-  window = {
-    completion = {
-      border = border "CmpBorder",
-      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+M.cmp = function()
+  return {
+    window = {
+      completion = {
+        border = border "CmpBorder",
+        winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+      },
+      documentation = {
+        border = border "CmpBorder",
+        winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+      },
     },
-    documentation = {
-      border = border "CmpBorder",
-      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-    },
-  },
-  mapping = require("custom.mappings.cmp").mappings
-}
-
+    mapping = require("custom.mappings.cmp").setup,
+  }
+end
 
 return M
