@@ -36,31 +36,19 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = require "custom.servers"
+local servers = require "custom.lsp-servers"
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  local opts = {
     on_attach = on_attach,
     capabilities = capabilities,
   }
+  local settings_present, server_settings = pcall(require, "custom.lsp-servers.settings." .. lsp)
+  if settings_present then
+    local updated_opts = vim.tbl_deep_extend("force",
+      server_settings,
+      opts)
+    lspconfig[lsp].setup(updated_opts)
+  else
+    lspconfig[lsp].setup(opts)
+  end
 end
-
-lspconfig.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  },
-}
