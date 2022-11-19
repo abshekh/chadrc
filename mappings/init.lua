@@ -1,3 +1,7 @@
+local function termcodes(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 local M = {}
 
 M.disabled = {
@@ -50,13 +54,21 @@ M.general = {
     ["<C-Right>"] = { ":vertical resize +2<CR>", "resize window right" },
   },
 
-  -- t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
+  t = { ["<ESC>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
 
-  -- v = {
-  -- },
+  v = {
+    ["<"] = { "<gv", "outdent" },
+    [">"] = { ">gv", "indent" },
+  },
 
   -- x = {
   -- },
+  c = {
+    ["<C-j>"] = { "<C-n>", "next suggetion" },
+    ["<C-k>"] = { "<C-p>", "previous suggestion" },
+    ["<C-h>"] = { "<Up>", "previous command" },
+    ["<C-l>"] = { "<Down>", "next command" },
+  }
 }
 
 M.tabufline = {

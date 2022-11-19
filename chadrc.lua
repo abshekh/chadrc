@@ -14,7 +14,6 @@ M.ui = {
   changed_themes = themes,
   hl_override = highlights.override,
   hl_add = highlights.add,
-  -- transparency = true,
 }
 
 M.plugins = require "custom.plugins"

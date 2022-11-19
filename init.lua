@@ -6,9 +6,31 @@ local autocmd = vim.api.nvim_create_autocmd
 --   command = "tabdo wincmd =",
 -- })
 
+
 require("custom.commands")
 
-vim.opt.timeout = false -- don't timeout on pressing leader key
+vim.cmd [[
+if has('nvim') && executable('nvr')
+  let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
+]]
+
+local set          = vim.opt
+set.wrap           = false
+set.timeout        = false -- don't timeout on pressing leader key
+set.relativenumber = true -- Show relative numberline
+set.swapfile       = false -- Disable use of swapfile for the buffer
+set.writebackup    = false -- Disable making a backup before overwriting a file
+set.undofile       = true -- Enable persistent undo
+set.foldmethod     = "expr" -- auto folds based on exprs
+set.foldexpr       = "nvim_treesitter#foldexpr()" -- create folds based on treesitter
+set.foldlevel      = 99
+set.foldlevelstart = 99
+set.foldenable     = false
+set.foldtext       = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+set.fillchars      = set.fillchars + 'diff:╱' + 'fold: '
+vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]] -- wrap telescope
+vim.cmd [[ autocmd FileType * set formatoptions-=o ]] -- don't continue the comment
 
 -- run this to symlink the ftplugin
 -- ln -s ~/.config/nvim/lua/custom/ftplugin/ ~/.config/nvim

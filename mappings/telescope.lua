@@ -20,12 +20,15 @@ M.mappings = {
     ["<leader><leader>"] = { "<CMD> Telescope find_files <CR>", "find files" },
     ["<leader>/"] = { "<CMD> Telescope live_grep <CR>", "live grep" },
     ["<leader>,"] = { "<CMD> Telescope buffers <CR>", "find buffers" },
+    ["<leader><"] = { "<CMD> Telescope terms <CR>", "find terminals" },
 
     -- git
     ["<leader>gm"] = { "<CMD> Telescope git_commits <CR>", "git commits" },
     ["<leader>gs"] = { "<CMD> Telescope git_status <CR>", "git status" },
     ["<leader>gb"] = { "<CMD> Telescope git_branches <CR>", "git branches" },
-    ["<leader>j"] = { "<CMD> Telescope jumplist <CR>", "jumplist" },
+    ["<leader>j"]  = { "<CMD> Telescope jumplist <CR>", "jumplist" },
+
+    ["<leader>'"] = { "<CMD> Telescope resume <CR>", "telescope resume last command" }
   },
   v = {
     ["<leader>/"] = {

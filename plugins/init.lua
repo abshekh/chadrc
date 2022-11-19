@@ -37,13 +37,11 @@ return {
     override_options = overrides.packer,
   },
 
+  ["lewis6991/gitsigns.nvim"] = {
+    override_options = overrides.gitsigns,
+  },
+
   -- Install a plugin
-  -- ["max397574/better-escape.nvim"] = {
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("better_escape").setup()
-  --   end,
-  -- },
 
   -- code formatting, linting etc
   ["jose-elias-alvarez/null-ls.nvim"] = {

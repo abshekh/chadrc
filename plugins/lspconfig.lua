@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = { "html", "cssls", "tsserver", "hls" }
+local servers = require "custom.servers"
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,

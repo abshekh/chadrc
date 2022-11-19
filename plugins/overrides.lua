@@ -1,36 +1,23 @@
 local M = {}
 
-M.treesitter = {
-  ensure_installed = {
-    "vim",
-    "lua",
-    "html",
-    "css",
-    "typescript",
-    "c",
-  },
-}
-
 M.mason = {
   ensure_installed = {
     -- lua stuff
     "lua-language-server",
-    "stylua",
 
     -- web dev stuff
-    "css-lsp",
-    "html-lsp",
+    -- "css-lsp",
+    -- "html-lsp",
     "typescript-language-server",
-    "deno",
+    -- "deno",
 
-    "haskell-language-server",
+    -- "haskell-language-server",
   },
   ui = {
     border = vim.g.border_style,
   }
 }
 
--- git support in nvimtree
 M.nvimtree = {
   git = {
     enable = false,
@@ -96,6 +83,14 @@ M.packer = {
       }
     end,
     prompt_border = vim.g.border_style,
+  },
+}
+
+M.gitsigns = {
+  preview_config = {
+    border = vim.g.border_style,
+    style = "minimal",
+    relative = "cursor",
   },
 }
 
