@@ -48,10 +48,12 @@ M.general = {
 
     ["gf"] = { "gF", "go to file" },
 
-    ["<C-Up>"]    = { ":resize +2<CR>", "resize window up" },
-    ["<C-Down>"]  = { ":resize -2<CR>", "resize window down" },
-    ["<C-Left>"]  = { ":vertical resize -2<CR>", "resize window left" },
-    ["<C-Right>"] = { ":vertical resize +2<CR>", "resize window right" },
+    ["<C-Up>"]    = { "<CMD>resize +2<CR>", "resize window up" },
+    ["<C-Down>"]  = { "<CMD>resize -2<CR>", "resize window down" },
+    ["<C-Left>"]  = { "<CMD>vertical resize -2<CR>", "resize window left" },
+    ["<C-Right>"] = { "<CMD>vertical resize +2<CR>", "resize window right" },
+
+    ["<leader>gg"] = { "<CMD>DiffviewOpen<CR>", "open diffview" },
   },
 
   t = { ["<ESC>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },

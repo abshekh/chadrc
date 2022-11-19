@@ -1,7 +1,7 @@
 ## To be used with NvChad
 ## Installation
 ```
-git clone url ~/.config/nvim/lua/custom/
+git clone git@github.com:abshekh/chadrc.git ~/.config/nvim/lua/custom/
 ln -s ~/.config/nvim/lua/custom/ftplugin/ ~/.config/nvim
 ```
 ## LSP Settings

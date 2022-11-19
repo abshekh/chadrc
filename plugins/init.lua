@@ -40,8 +40,21 @@ return {
   ["lewis6991/gitsigns.nvim"] = {
     override_options = overrides.gitsigns,
   },
+  ["nvim-lua/plenary.nvim"] = { rm_default_opts = true },
 
   -- Install a plugin
+  ["tpope/vim-fugitive"] = { },
+  ["sindrets/diffview.nvim"] = {
+    after = "plenary.nvim",
+    config = function()
+      require "custom.plugins.diffview"
+    end,
+  },
+
+
+  -- Utilities
+  ["junegunn/vim-easy-align"] = { },
+  ["dhruvasagar/vim-table-mode"] = { },
 
   -- code formatting, linting etc
   ["jose-elias-alvarez/null-ls.nvim"] = {

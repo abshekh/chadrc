@@ -20,6 +20,11 @@ M.add = {
   LspInfoBorder = {
     fg = "grey"
   },
+  DiffText = {
+    bold = true,
+    bg = "red",
+    fg = "darker_black"
+  },
 }
 
 

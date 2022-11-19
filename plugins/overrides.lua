@@ -71,6 +71,10 @@ M.telescope = function()
     defaults = {
       mappings = require("custom.mappings.telescope").setup(actions),
     },
+    pickers = {
+      buffers = require("custom.mappings.telescope").buffer_setup(actions),
+      -- terms = require("custom.mappings.telescope").terms_setup(actions),
+    },
   }
 end
 
