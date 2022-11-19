@@ -1,13 +1,5 @@
-local autocmd = vim.api.nvim_create_autocmd
-
--- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
-
-
 require("custom.commands")
+require("custom.autocmds")
 
 vim.cmd [[
 if has('nvim') && executable('nvr')
@@ -15,6 +7,7 @@ if has('nvim') && executable('nvr')
 endif
 ]]
 
+-- :set diffopt+=vertical
 local set          = vim.opt
 set.wrap           = false
 set.timeout        = false -- don't timeout on pressing leader key
@@ -29,6 +22,7 @@ set.foldlevelstart = 99
 set.foldenable     = false
 set.foldtext       = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 set.fillchars      = set.fillchars + 'diff:╱' + 'fold: '
+-- set.shell          = "/bin/zsh" -- set zsh as shell for integrated terminal
 vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]] -- wrap telescope
 vim.cmd [[ autocmd FileType * set formatoptions-=o ]] -- don't continue the comment
 
