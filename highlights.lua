@@ -25,6 +25,13 @@ M.add = {
     bg = "red",
     fg = "darker_black"
   },
+  LspCodeLens = {
+    fg = "grey"
+  },
+  LspCodeLensSeparator = {
+    fg = "grey"
+  },
+
 }
 
 

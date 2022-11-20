@@ -103,29 +103,23 @@ end
 
 M.buffer_setup = function(actions)
   return {
-    initial_mode = "normal",
-    mappings = {
       i = {
         ["<C-d>"] = actions.delete_buffer,
       },
       n = {
         ["dd"] = actions.delete_buffer,
       },
-    },
   }
 end
 
 -- M.terms_setup = function(actions)
 --   return {
---     initial_mode = "normal",
---     mappings = {
 --       i = {
 --         ["<C-d>"] = actions.delete_buffer,
 --       },
 --       n = {
 --         ["dd"] = actions.delete_buffer,
 --       },
---     },
 --   }
 -- end
 

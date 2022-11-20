@@ -35,29 +35,16 @@ M.nvimtree = {
   },
 }
 
-local function border(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
 M.cmp = function()
   local cmp = require "cmp"
   return {
     window = {
       completion = {
-        border = border "CmpBorder",
+        border = require("custom.utils").border "CmpBorder",
         winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
       },
       documentation = {
-        border = border "CmpBorder",
+        border = require("custom.utils").border "CmpBorder",
         winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
       },
     },
@@ -72,7 +59,13 @@ M.telescope = function()
       mappings = require("custom.mappings.telescope").setup(actions),
     },
     pickers = {
-      buffers = require("custom.mappings.telescope").buffer_setup(actions),
+      buffers = {
+        initial_mode = "normal",
+        mappings = require("custom.mappings.telescope").buffer_setup(actions),
+      },
+      git_branches = {
+        initial_mode = "normal",
+      },
       -- terms = require("custom.mappings.telescope").terms_setup(actions),
     },
   }

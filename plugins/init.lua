@@ -7,8 +7,8 @@ return {
   -- Override plugin definition options
   ["neovim/nvim-lspconfig"] = {
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.plugins.lspconfig"
+      require("plugins.configs.lspconfig")
+      require("custom.plugins.lspconfig").setup()
     end,
   },
 
@@ -43,7 +43,7 @@ return {
   ["nvim-lua/plenary.nvim"] = { rm_default_opts = true },
 
   -- Install a plugin
-  ["tpope/vim-fugitive"] = { },
+  ["tpope/vim-fugitive"] = {},
   ["sindrets/diffview.nvim"] = {
     after = "plenary.nvim",
     config = function()
@@ -53,8 +53,20 @@ return {
 
 
   -- Utilities
-  ["junegunn/vim-easy-align"] = { },
-  ["dhruvasagar/vim-table-mode"] = { },
+  ["junegunn/vim-easy-align"] = {},
+  ["dhruvasagar/vim-table-mode"] = {},
+
+  -- lsp, dap
+  ["simrat39/rust-tools.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.rust-tools"
+    end,
+  },
+  ["purescript-contrib/purescript-vim"] = {}, -- purescript highlighliting
+  ["mfussenegger/nvim-jdtls"] = {
+    after = "nvim-lspconfig",
+  },
 
   -- code formatting, linting etc
   ["jose-elias-alvarez/null-ls.nvim"] = {
