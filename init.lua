@@ -9,6 +9,7 @@ endif
 
 -- :set diffopt+=vertical
 local set          = vim.opt
+set.title          = false
 set.wrap           = false
 set.timeout        = false -- don't timeout on pressing leader key
 set.relativenumber = true -- Show relative numberline

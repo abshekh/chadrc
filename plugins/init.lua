@@ -51,6 +51,11 @@ return {
     end,
   },
 
+  -- ["~/dev/lua/natural"] = {
+  --   config = function ()
+  --     require("natural").setup {}
+  --   end
+  -- },
 
   -- Utilities
   ["junegunn/vim-easy-align"] = {},
