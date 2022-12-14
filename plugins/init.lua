@@ -44,11 +44,16 @@ return {
 
   -- Install a plugin
   ["tpope/vim-fugitive"] = {},
-  ["sindrets/diffview.nvim"] = {
-    after = "plenary.nvim",
-    config = function()
-      require "custom.plugins.diffview"
-    end,
+  -- ["sindrets/diffview.nvim"] = {
+  --   after = "plenary.nvim",
+  --   config = function()
+  --     require "custom.plugins.diffview"
+  --   end,
+  -- },
+  ["kdheepak/lazygit.nvim"] = {
+    config = function ()
+      vim.g.lazygit_floating_window_scaling_factor = 1
+    end
   },
 
   -- ["~/dev/lua/natural"] = {
@@ -71,6 +76,13 @@ return {
   ["purescript-contrib/purescript-vim"] = {}, -- purescript highlighliting
   ["mfussenegger/nvim-jdtls"] = {
     after = "nvim-lspconfig",
+  },
+  ["rcarriga/nvim-dap-ui"] = {
+    after = "nvim-lspconfig",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+      require("dapui").setup()
+    end,
   },
 
   -- code formatting, linting etc

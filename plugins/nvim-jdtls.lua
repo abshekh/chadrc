@@ -6,6 +6,10 @@ end
 local lsp_opts = require("custom.plugins.lspconfig").getOpts()
 local capabilities = lsp_opts.capabilities
 
+-- (after! java-mode
+--   (setq lsp-java-format-settings-url "http://google.github.io/styleguide/eclipse-java-google-style.xml")
+--   (setq lsp-java-format-settings-profile "GoogleStyle"))
+
 
 -- Determine OS
 local home = os.getenv("HOME")
@@ -197,8 +201,8 @@ local config = {
 
 config["on_attach"] = function(client, bufnr)
   -- local _, _ = pcall(vim.lsp.codelens.refresh)
-  -- require("jdtls.dap").setup_dap_main_class_configs()
-  -- jdtls.setup_dap({ hotcodereplace = "auto" })
+  require("jdtls.dap").setup_dap_main_class_configs()
+  jdtls.setup_dap({ hotcodereplace = "auto" })
   lsp_opts.on_attach(client, bufnr)
   local map = function(mode, lhs, rhs, desc)
     if desc then

@@ -53,7 +53,7 @@ M.general = {
     ["<C-Left>"]  = { "<CMD>vertical resize -2<CR>", "resize window left" },
     ["<C-Right>"] = { "<CMD>vertical resize +2<CR>", "resize window right" },
 
-    ["<leader>gg"] = { "<CMD>DiffviewOpen<CR>", "open diffview" },
+    ["<leader>gg"] = { "<CMD>LazyGit<CR>", "open lazygit" },
   },
 
   t = { ["<ESC>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },

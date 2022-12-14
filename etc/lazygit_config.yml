@@ -1,0 +1,16 @@
+# alias nvim='nvim --listen /tmp/nvim-server.pipe'
+os:
+  editCommand: 'nvim'
+  editCommandTemplate: '{{editor}} --server /tmp/nvim-server.pipe --remote-send "<C-\><C-N>:tabe +{{line}} $(pwd)/{{filename}}<CR>"'
+
+gui:
+  theme:
+    selectedLineBgColor:
+      - underline 
+    selectedRangeBgColor:
+      - underline
+
+git:
+  paging:
+    colorArg: never
+    pager: delta --dark --paging=never
