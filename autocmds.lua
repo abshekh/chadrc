@@ -13,19 +13,19 @@ vim.cmd [[
   au BufNewFile,BufRead *.purs :setl ft=purescript
   autocmd BufEnter,BufRead * normal zR
 ]]
---
--- vim.cmd [[ 
---   augroup neovim_terminal
---       autocmd!
---       " Enter Terminal-mode (insert) automatically
---       autocmd TermOpen * startinsert
---       " Disables number lines on terminal buffers
---       autocmd TermOpen * :set nonumber norelativenumber
---       " allows you to use Ctrl-c on terminal window
---       autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
---       " autocmd TermClose zsh call feedkeys("i")
---   augroup END
--- ]]
+
+vim.cmd [[ 
+  augroup neovim_terminal
+      autocmd!
+      " Enter Terminal-mode (insert) automatically
+      autocmd TermOpen * startinsert
+      " Disables number lines on terminal buffers
+      autocmd TermOpen * :set nonumber norelativenumber
+      " allows you to use Ctrl-c on terminal window
+      autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+      " autocmd TermClose zsh call feedkeys("i")
+  augroup END
+]]
 
 -- autocmd BufReadPost,FileReadPost * normal zR
 -- au BufNewFile,BufRead *.log :setl ft=json
