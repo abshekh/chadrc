@@ -42,20 +42,39 @@ return {
   },
   ["nvim-lua/plenary.nvim"] = { rm_default_opts = true },
 
+  ["NvChad/ui"] = {
+    override_options = overrides.statusline
+  },
+
   -- Install a plugin
   ["tpope/vim-fugitive"] = {},
-  -- ["sindrets/diffview.nvim"] = {
-  --   after = "plenary.nvim",
-  --   config = function()
-  --     require "custom.plugins.diffview"
-  --   end,
-  -- },
+  ["sindrets/diffview.nvim"] = {
+    after = "plenary.nvim",
+    config = function()
+      require "custom.plugins.diffview"
+    end,
+  },
   ["kdheepak/lazygit.nvim"] = {
-    config = function ()
+    config = function()
       vim.g.lazygit_floating_window_scaling_factor = 1
     end
   },
-
+  ["ldelossa/nvim-ide"] = {
+    after = "ui",
+    config = function ()
+      local _, ide = pcall(require, "ide")
+      ide.setup {}
+    end
+  },
+  ['ldelossa/buffertag'] = {
+    after = "ui",
+    config = function ()
+      local _, buffertag = pcall(require, "buffertag")
+      buffertag.setup {
+        border = vim.g.border_style,
+      }
+    end
+  },
   -- ["~/dev/lua/natural"] = {
   --   config = function ()
   --     require("natural").setup {}

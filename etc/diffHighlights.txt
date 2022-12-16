@@ -1,0 +1,57 @@
+DiffAdd        xxx guifg=#61afef
+DiffChange     xxx guifg=#6f737b
+DiffDelete     xxx guifg=#e06c75
+DiffText       xxx cterm=bold gui=bold guifg=#1b1f27 guibg=#e06c75
+DevIconDiff    xxx ctermfg=59 guifg=#41535b
+DiffviewDiffAddAsDelete xxx cterm=bold gui=bold guifg=#0000ff guibg=#008b8b
+DiffviewDiffDelete xxx links to Comment
+DiffviewFilePanelTitle xxx cterm=bold gui=bold guifg=#e5c07b
+DiffviewFilePanelCounter xxx cterm=bold gui=bold guifg=#e06c75
+DiffviewFilePanelFileName xxx cterm= gui= guifg=#abb2bf
+DiffviewDim1   xxx cterm= gui= guifg=#565c64
+DiffviewPrimary xxx cterm= gui= guifg=#61afef
+DiffviewSecondary xxx cterm= gui= guifg=#98c379
+DiffviewStatusRenamed xxx links to diffChanged
+diffChanged    xxx cleared
+DiffviewStatusCopied xxx links to diffChanged
+DiffviewStatusTypeChange xxx links to diffChanged
+DiffviewStatusUnmerged xxx links to diffChanged
+DiffviewWinSeparator xxx links to WinSeparator
+DiffviewStatusDeleted xxx links to diffRemoved
+diffRemoved    xxx guifg=#e06c75
+DiffviewStatusBroken xxx links to diffRemoved
+DiffviewStatusIgnored xxx links to Comment
+DiffviewStatusUnknown xxx links to diffRemoved
+DiffviewStatusLine xxx links to StatusLine
+DiffviewNonText xxx links to NonText
+DiffviewNormal xxx links to Normal
+DiffviewEndOfBuffer xxx links to EndOfBuffer
+DiffviewFilePanelRootPath xxx links to DiffviewFilePanelTitle
+DiffviewFilePanelInsertions xxx links to diffAdded
+diffAdded      xxx guifg=#98c379
+DiffviewFilePanelPath xxx links to Comment
+DiffviewSignColumn xxx links to Normal
+DiffviewStatusLineNC xxx links to StatusLineNC
+DiffviewFilePanelDeletions xxx links to diffRemoved
+DiffviewCursorLine xxx links to CursorLine
+DiffviewFilePanelConflicts xxx links to DiagnosticSignWarn
+DiffviewReference xxx links to Function
+DiffviewFolderName xxx links to Directory
+DiffviewFolderSign xxx links to PreProc
+DiffviewStatusAdded xxx links to diffAdded
+DiffviewStatusUntracked xxx links to diffAdded
+DiffviewStatusModified xxx links to diffChanged
+TelescopeResultsDiffUntracked xxx links to NonText
+TelescopeResultsDiffDelete xxx guifg=#e06c75
+TelescopeResultsDiffAdd xxx guifg=#98c379
+TelescopeResultsDiffChange xxx guifg=#e7c787
+DiffChangeDelete xxx guifg=#e06c75
+DiffModified   xxx guifg=#fca2aa
+GitSignsAdd    xxx links to diffAdded
+GitSignsChange xxx links to DiffChange
+GitSignsDelete xxx links to diffRemoved
+GitSignsAddLn  xxx links to DiffAdd
+GitSignsChangeLn xxx links to DiffChange
+GitSignsAddPreview xxx links to DiffAdd
+GitSignsDeletePreview xxx links to DiffDelete
+GitSignsDeleteVirtLn xxx links to DiffDelete

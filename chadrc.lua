@@ -9,7 +9,7 @@ vim.g.border_style       = "rounded"
 vim.g.disable_formatting = {}
 
 M.ui = {
-  theme_toggle = { "onedark", "one_light" },
+  -- theme_toggle = { "onedark", "one_light" },
   theme = "onedark",
   changed_themes = themes,
   hl_override = highlights.override,

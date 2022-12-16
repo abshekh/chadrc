@@ -3,6 +3,7 @@ require("custom.autocmds")
 
 -- :set diffopt+=vertical
 local set          = vim.opt
+set.laststatus     = 3
 set.title          = false
 set.wrap           = false
 set.timeout        = false -- don't timeout on pressing leader key

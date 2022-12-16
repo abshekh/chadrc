@@ -14,15 +14,18 @@ M.override = {
   FloatBorder = {
     fg = "grey"
   },
+  -- St_EmptySpace = {
+  --   bg = "none" -- after file info in status line
+  -- }
 }
 
-M.add = {
+M.add = { 
   LspInfoBorder = {
     fg = "grey"
   },
   DiffText = {
     bold = true,
-    bg = "red",
+    bg = "grey",
     fg = "darker_black"
   },
   LspCodeLens = {
@@ -31,7 +34,9 @@ M.add = {
   LspCodeLensSeparator = {
     fg = "grey"
   },
-
+  FoldColumn = {
+    bg = "none"
+  }
 }
 
 

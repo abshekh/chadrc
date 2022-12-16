@@ -41,8 +41,6 @@ M.general = {
 
     -- quickfix list
     ["<C-q>"] = { "<CMD>call QuickFixToggle() <CR>", "quickfix toggle" },
-    ["]q"]    = { "<CMD>cnext<CR>", "quickfix next" },
-    ["[q"]    = { "<CMD>cprev<CR>", "quickfix next" },
 
     ["<C-w>m"] = { "<CMD>tabedit %<CR>", "maximize" },
 
@@ -53,7 +51,10 @@ M.general = {
     ["<C-Left>"]  = { "<CMD>vertical resize -2<CR>", "resize window left" },
     ["<C-Right>"] = { "<CMD>vertical resize +2<CR>", "resize window right" },
 
-    ["<leader>gg"] = { "<CMD>LazyGit<CR>", "open lazygit" },
+    -- ["<leader>gg"] = { "<CMD>LazyGit<CR>", "open lazygit" },
+    ["<C-l>"] = {"<CMD>Workspace LeftPanelToggle<CR>", "Workspace LeftPanelToggle"},
+    ["<C-r>"] = {"<CMD>Workspace RightPanelToggle<CR>", "Workspace RightPanelToggle"},
+
   },
 
   t = { ["<ESC>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },

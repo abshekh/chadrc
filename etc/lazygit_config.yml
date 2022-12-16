@@ -12,5 +12,15 @@ gui:
 
 git:
   paging:
-    colorArg: never
+    colorArg: always
     pager: delta --dark --paging=never
+
+# git:
+#   paging:
+#     colorArg: always
+#     useConfig: true
+
+# keybinding:
+#   universal:
+#     scrollLeft: '<c-h>' # scroll left within list view
+#     scrollRight: '<c-l>' # scroll right within list view
