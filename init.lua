@@ -21,5 +21,3 @@ set.fillchars      = set.fillchars + 'diff:╱' + 'fold: '
 set.shell          = "/bin/zsh" -- set zsh as shell for integrated terminal
 vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]] -- wrap telescope
 vim.cmd [[ autocmd FileType * set formatoptions-=o ]] -- don't continue the comment
-
-vim.keymap.set("n", "<leader>gd", "<cmd>terminal lazygit<cr>")

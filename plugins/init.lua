@@ -59,13 +59,13 @@ return {
       vim.g.lazygit_floating_window_scaling_factor = 1
     end
   },
-  ["ldelossa/nvim-ide"] = {
-    after = "ui",
-    config = function ()
-      local _, ide = pcall(require, "ide")
-      ide.setup {}
-    end
-  },
+  -- ["ldelossa/nvim-ide"] = {
+  --   after = "ui",
+  --   config = function ()
+  --     local _, ide = pcall(require, "ide")
+  --     ide.setup {}
+  --   end
+  -- },
   ['ldelossa/buffertag'] = {
     after = "ui",
     config = function ()
